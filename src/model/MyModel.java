@@ -119,8 +119,7 @@ public class MyModel extends CommonModel{
 		Callable<Solution<Position>> callable = new Callable<Solution<Position>>() {
 			@Override
 			public Solution<Position> call() throws Exception {
-				if(algorithm.equalsIgnoreCase("bfs")){
-					Maze3d maze = hm.get(name);
+				if(algorithm.equalsIgnoreCase("bfs")){	
 					if(maze != null){
 						CostComparator<Position> c = new CostComparator<Position>();
 						BFS<Position> bfs = new BFS<Position>(c);
@@ -129,8 +128,7 @@ public class MyModel extends CommonModel{
 						return bfsSolution;
 					}
 				}
-				else if(algorithm.equalsIgnoreCase("MazeManhattanDistance")){
-					Maze3d maze = hm.get(name);
+				else if(algorithm.equalsIgnoreCase("MazeManhattanDistance")){		
 					if(maze != null){
 						CostComparator<Position> c = new CostComparator<Position>();
 						AStar<Position> astarManhattanDistance = new AStar<Position>(new MazeManhattenDistance(new State<Position>(maze.getGoalPosition())),c);
@@ -140,7 +138,6 @@ public class MyModel extends CommonModel{
 					}
 				}
 				else if(algorithm.equalsIgnoreCase("MazeAirDistance")){
-					Maze3d maze = hm.get(name);
 					if(maze != null){
 						CostComparator<Position> c = new CostComparator<Position>();
 						AStar<Position> astarAirDistance = new AStar<Position>(new MazeAirDistance(new State<Position>(maze.getGoalPosition())),c);
@@ -161,7 +158,7 @@ public class MyModel extends CommonModel{
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
 		}
-		return null;	
+		return solution;	
 	}
 
 	@Override

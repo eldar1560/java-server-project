@@ -50,6 +50,7 @@ public class Maze3dClientHandler implements ClientHandler{
 					out.println("doneSolve!");
 					out.flush();
 					while(!(line=in.readLine()).equals("GetSolution"));
+					out.println(solution.getSolutionSize());
 					out.println(solution.toString());
 					out.flush();
 					break;
