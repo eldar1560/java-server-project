@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
 /**
- * MyServer calss - manage the side of the server
+ * MyServer class - manage the side of the server
  *
  */
 
