@@ -49,8 +49,8 @@ public class MyServer extends CommonServer implements Runnable{
 		ipToSocket = new HashMap<String,Socket>();
 		this.display = new Display();
 		shell = new Shell(display);
-		shell.setSize(300, 300);
-		shell.setText("The Server");
+		shell.setSize(350, 350);
+		shell.setText("Server");
 	}
 	
 	
@@ -232,7 +232,7 @@ public class MyServer extends CommonServer implements Runnable{
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true,2,1));
 		
 		TableColumn column = new TableColumn(table, SWT.NONE);
-	    column.setText("IP Number");
+	    column.setText("IP Address");
 	    column.setData(new GridData(SWT.FILL, SWT.FILL, true, true,2,1));
 	    column.setWidth(shell.getSize().x);
 	    
@@ -276,7 +276,6 @@ public class MyServer extends CommonServer implements Runnable{
 					    		 soc.close();
 					          }
 	    				catch (IOException e) {
-	    					// TODO Auto-generated catch block
 	    					e.printStackTrace();
 					    }
 	    				ips.remove(str);
@@ -338,7 +337,7 @@ public class MyServer extends CommonServer implements Runnable{
 				b=System.currentTimeMillis();
 				b+=c;
 				if(b-a>=1500)
-					 updateTalbe();
+					 updateTable();
 			}
 		}
 		close();
@@ -346,7 +345,7 @@ public class MyServer extends CommonServer implements Runnable{
 		
 	}
 
-	private void updateTalbe(){
+	private void updateTable(){
 		table.clearAll();				
 	    for(int i = 0; i < ips.size();i++){
 	    	TableItem item = new TableItem(table, SWT.Selection, i);
