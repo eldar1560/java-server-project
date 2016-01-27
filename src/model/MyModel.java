@@ -68,8 +68,11 @@ public class MyModel extends CommonModel{
 		int y = Integer.parseInt(parm[3]);
 		int z = Integer.parseInt(parm[4]);
 		int x = Integer.parseInt(parm[5]);
-		if(hm.get(name)!=null)
+		if(hm.containsKey(name) == true)
+		{			
 			return hm.get(name);
+			
+		}
 		Callable<Maze3d> callable = new Callable<Maze3d>() {
 
 			@Override
@@ -102,10 +105,10 @@ public class MyModel extends CommonModel{
 	
 	@Override
 	public Solution<Position> solve(Maze3d maze) {
-		Solution<Position> solution = hashSolution.get(maze);
-
-		if(solution != null){
-			return solution;
+		Solution<Position> solution  = hashSolution.get(maze);
+		if(hashSolution.containsKey(maze) == true)
+		{
+			return solution;	
 		}
 		Callable<Solution<Position>> callable = new Callable<Solution<Position>>() {
 			@Override
@@ -157,11 +160,11 @@ public class MyModel extends CommonModel{
 		String[] parm=str.split(" ");
 		String algorithm;
 		String name = parm[0];
-		Solution<Position> solution = hashSolution.get(name);
-
-		if(solution != null){
-			return solution;
-		}
+		Solution<Position> solution  = hashSolution.get(hm.get(name));
+		if(hashSolution.containsKey(hm.get(name)) == true)
+		{
+			return solution;	
+		}	
 		
 		if(parm.length == 2)
 			algorithm = parm[1];
