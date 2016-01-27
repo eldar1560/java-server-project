@@ -12,7 +12,11 @@ public interface Model {
 	 * @param name - the name of the maze
 	 */
 	Solution<Position> solve(String name);
-
+	/**
+	 * create the solution of the maze and send him to the controller
+	 * @param maze - the maze
+	 */
+	Solution<Position> solve(Maze3d maze);
 	
 	/**
 	 * generate new maze with specific name, and size of x, y and z

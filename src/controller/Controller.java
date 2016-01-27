@@ -38,7 +38,13 @@ public interface Controller {
 	 * @return solution of the maze
 	 */
 	Solution<Position> getSolution(String parm);
-
+	
+	/**
+	 * get solution of maze
+	 * @param maze - the maze
+	 * @return solution of the maze
+	 */
+	Solution<Position> getSolution(Maze3d maze);
 	/**
 	 * exit from the server side
 	 */

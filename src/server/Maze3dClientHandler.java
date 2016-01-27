@@ -42,19 +42,51 @@ public class Maze3dClientHandler implements ClientHandler{
 					break;
 					
 				case "solve":
-					Solution<Position> solution = controller.getSolution(com[1]);
-					if(solution == null){
-						out.println("Error to create solution");
+					if(com[1].equals("loaded"))
+					{
+						int y ,z ,x;
+						String yStr = in.readLine();
+						y = Integer.parseInt(yStr);
+						String zStr = in.readLine();
+						z = Integer.parseInt(zStr);
+						String xStr = in.readLine();
+						x = Integer.parseInt(xStr);
+						byte b;
+						byte bArr[] = new byte[9+x*y*z];
+						for(int i = 0; i < 9 + x*y*z; i++){
+							
+							b = (byte)in.read();
+							bArr[i] = b;
+						}
+						Maze3d loaded = new Maze3d(bArr);
+						Solution<Position> solution = controller.getSolution(loaded);
+						if(solution == null){
+							out.println("Error to create solution");
+							break;
+						}
+						out.println("doneSolve!");
+						out.flush();
+						while(!(line=in.readLine()).equals("GetSolution"));
+						out.println(solution.getSolutionSize());
+						out.println(solution.toString());
+						out.flush();
+						break;	
+					}
+					else
+					{
+						Solution<Position> solution = controller.getSolution(com[1]);
+						if(solution == null){
+							out.println("Error to create solution");
+							break;
+						}
+						out.println("doneSolve!");
+						out.flush();
+						while(!(line=in.readLine()).equals("GetSolution"));
+						out.println(solution.getSolutionSize());
+						out.println(solution.toString());
+						out.flush();
 						break;
 					}
-					out.println("doneSolve!");
-					out.flush();
-					while(!(line=in.readLine()).equals("GetSolution"));
-					out.println(solution.getSolutionSize());
-					out.println(solution.toString());
-					out.flush();
-					break;
-					
 				default:
 					break;
 				}

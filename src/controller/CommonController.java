@@ -37,6 +37,8 @@ public abstract class CommonController implements Controller{
 	@Override
 	public abstract Solution<Position> getSolution(String parm);
 
+	@Override 
+	public abstract Solution<Position> getSolution(Maze3d maze);
 	@Override
 	public abstract void exit();
 

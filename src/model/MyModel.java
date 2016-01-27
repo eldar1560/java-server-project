@@ -99,7 +99,59 @@ public class MyModel extends CommonModel{
 		
 		return null;		
 	}
+	
+	@Override
+	public Solution<Position> solve(Maze3d maze) {
+		Solution<Position> solution = hashSolution.get(maze);
 
+		if(solution != null){
+			return solution;
+		}
+		Callable<Solution<Position>> callable = new Callable<Solution<Position>>() {
+			@Override
+			public Solution<Position> call() throws Exception {
+				if(algorithemForSolution.equalsIgnoreCase("bfs")){	
+					if(maze != null){
+						CostComparator<Position> c = new CostComparator<Position>();
+						BFS<Position> bfs = new BFS<Position>(c);
+						Solution<Position> bfsSolution = bfs.search(new SearchableMaze(maze));
+						hashSolution.put(maze, bfsSolution);
+						return bfsSolution;
+					}
+				}
+				else if(algorithemForSolution.equalsIgnoreCase("MazeManhattanDistance")){		
+					if(maze != null){
+						CostComparator<Position> c = new CostComparator<Position>();
+						AStar<Position> astarManhattanDistance = new AStar<Position>(new MazeManhattenDistance(new State<Position>(maze.getGoalPosition())),c);
+						Solution<Position> astarManhattan = astarManhattanDistance.search(new SearchableMaze(maze));
+						hashSolution.put(maze, astarManhattan);
+						return astarManhattan;
+					}
+				}
+				else if(algorithemForSolution.equalsIgnoreCase("MazeAirDistance")){
+					if(maze != null){
+						CostComparator<Position> c = new CostComparator<Position>();
+						AStar<Position> astarAirDistance = new AStar<Position>(new MazeAirDistance(new State<Position>(maze.getGoalPosition())),c);
+						Solution<Position> astarAir = astarAirDistance.search(new SearchableMaze(maze));
+						hashSolution.put(maze, astarAir);
+						return astarAir;
+					}
+				}
+				return hashSolution.get(maze);
+			}
+		
+		};
+			
+		Future<Solution<Position>> solutionCreate = threadpool.submit(callable);
+		try {
+			hashSolution.put(maze, solutionCreate.get());
+			return solutionCreate.get();
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
+		return solution;	
+	}
+	
 	@Override
 	public Solution<Position> solve(String str) {
 		String[] parm=str.split(" ");

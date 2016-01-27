@@ -55,4 +55,10 @@ public class MyController extends CommonController{
 	public boolean resume(){
 		return model.resume();
 	}
+
+	@Override
+	public Solution<Position> getSolution(Maze3d maze) {
+		Solution<Position> solution = model.solve(maze);
+		return solution;
+	}
 }

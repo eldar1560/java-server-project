@@ -24,6 +24,9 @@ public abstract class CommonModel implements Model{
 		
 	@Override
 	public abstract Solution<Position> solve(String name);
+	
+	@Override
+	public abstract Solution<Position> solve(Maze3d maze);
 
 	@Override
 	public abstract void exit();
