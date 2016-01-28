@@ -238,6 +238,7 @@ public class MyModel extends CommonModel{
 		try{
 			out = new ObjectOutputStream(new GZIPOutputStream(new FileOutputStream("ClientMap.zip")));
 			out.writeObject(hm);
+			out.writeObject(hashSolution);
 			out.flush();
 		} catch (FileNotFoundException e) {
 			controller.setMessage(e.getMessage());
@@ -262,6 +263,7 @@ public class MyModel extends CommonModel{
 		try{
 			in = new ObjectInputStream(new GZIPInputStream(new FileInputStream("ServerMap.zip")));
 			hm = (HashMap<String, Maze3d>) in.readObject();
+			hashSolution = (HashMap<Maze3d,Solution<Position>>) in.readObject();
 		} catch (FileNotFoundException e) {
 			controller.setMessage(e.getMessage());
 		}

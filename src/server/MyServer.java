@@ -210,17 +210,17 @@ public class MyServer extends CommonServer implements Runnable{
 		
 		Button mode = new Button(shell, SWT.PUSH);
 		mode.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
-		mode.setText("Change Mode");
+		mode.setText("Change Server Mode");
 		
 		Label label = new Label(shell, SWT.NONE);
 		if(isAlive()){
 			label.setText("Online");
-			label.setBackground(new Color (display,0,255,0));
+			shell.setBackground(new Color (display,0,255,0));
 		}
 		label.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
 		
 		Button closeSession = new Button(shell, SWT.PUSH);
-		closeSession.setText("Stop client connection");
+		closeSession.setText("Stop the connection with specific client");
 		
 		Button closeServer = new Button(shell, SWT.PUSH);
 		closeServer.setText("Close the server");
@@ -292,22 +292,22 @@ public class MyServer extends CommonServer implements Runnable{
 			@Override
 			public void handleEvent(Event arg0) {
 				if(isAlive()){
-					label.setBackground(new Color (display,255,255,0));
-					label.setText("Shuting down");
+					label.setText("shutting down");
 					pause();
+					label.setBackground(new Color(display,255,255,255));
 					label.setText("Offline");
-					label.setBackground(new Color (display,255,0,0));
+					shell.setBackground(new Color (display,255,0,0));
 					if(!statusText.isDisposed()){
-						statusText.setText("Now Offline");
+						statusText.setText("Offline");
 						statusText.update();
 					}
 				}
 				else{
 					resume();
 					label.setText("Online");
-					label.setBackground(new Color (display,0,255,0));
+					shell.setBackground(new Color (display,0,255,0));
 					if(!statusText.isDisposed()){
-						statusText.setText("Now Online");
+						statusText.setText("Online");
 						statusText.update();
 					}
 				}
