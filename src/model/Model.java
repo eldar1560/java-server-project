@@ -5,6 +5,10 @@ import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 import controller.Controller;
 
+/**
+ * Interface Model - contains the function that we use them to give information to the client
+ * @author Eldar, Ofek
+ */
 public interface Model {
 
 	/**

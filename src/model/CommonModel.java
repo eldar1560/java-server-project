@@ -7,6 +7,11 @@ import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 import controller.Controller;
 
+/**
+ * Class CommonModel - abstract class implements from Model
+ * @author Eldar ,Ofek
+ *
+ */
 public abstract class CommonModel implements Model{
 	
 	HashMap<String, Maze3d> hm;

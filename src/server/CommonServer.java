@@ -6,8 +6,8 @@ import java.util.concurrent.ExecutorService;
 import controller.Controller;
 
 /**
- * CommonServer abstract class
- * 
+ * CommonServer abstract class that implements Server
+ * @author Eldar ,Ofek
  */
 
 public abstract class CommonServer implements Server {

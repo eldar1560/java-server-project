@@ -27,7 +27,7 @@ import org.eclipse.swt.widgets.TableItem;
 
 /**
  * MyServer class - manage the side of the server
- *
+ * @author Eldar,Ofek
  */
 
 public class MyServer extends CommonServer implements Runnable{
@@ -39,7 +39,13 @@ public class MyServer extends CommonServer implements Runnable{
 	Table table;
 	Label statusText;
 	int numOfClients;
-
+	
+	/**
+	 * Constructor to MyServer 
+	 * @param port the port of the server
+	 * @param clientHandler the client handler that we use to manage the client
+	 * @param numOfClients number of the clients that connect to the server
+	 */
 	public MyServer(int port,ClientHandler clientHandler,int numOfClients) {
 		super(port, numOfClients);
 		this.clientHandler = clientHandler;
@@ -49,7 +55,7 @@ public class MyServer extends CommonServer implements Runnable{
 		ipToSocket = new HashMap<String,Socket>();
 		this.display = new Display();
 		shell = new Shell(display);
-		shell.setSize(350, 350);
+		shell.setSize(550, 400);
 		shell.setText("Server");
 	}
 	
@@ -116,7 +122,9 @@ public class MyServer extends CommonServer implements Runnable{
 	public void close(){
 		pause();
 	}
-	
+	/**
+	 * pause the server
+	 */
 	public void pause(){
 		stop=true;
 		if(!statusText.isDisposed()){
@@ -206,7 +214,7 @@ public class MyServer extends CommonServer implements Runnable{
 	 * Configure the window widgets
 	 */
 	public void initWidgets(){
-		shell.setLayout(new GridLayout(2, false));
+		shell.setLayout(new GridLayout(3, false));
 		
 		Button mode = new Button(shell, SWT.PUSH);
 		mode.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
@@ -217,19 +225,21 @@ public class MyServer extends CommonServer implements Runnable{
 			label.setText("Online");
 			shell.setBackground(new Color (display,0,255,0));
 		}
-		label.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
-		
-		Button closeSession = new Button(shell, SWT.PUSH);
-		closeSession.setText("Stop the connection with specific client");
+		label.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 		
 		Button closeServer = new Button(shell, SWT.PUSH);
 		closeServer.setText("Close the server");
+		closeServer.setLayoutData(new GridData(SWT.RIGHT, SWT.RIGHT, false, false));
+		
+		Button closeSession = new Button(shell, SWT.PUSH);
+		closeSession.setText("Stop the connection with specific client");
+
 		
 		table = new Table(shell, SWT.PUSH | SWT.MULTI | SWT.BORDER
 		        | SWT.FULL_SELECTION);
 		table.setLinesVisible(true);
 	    table.setHeaderVisible(true);
-		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true,2,1));
+		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true,2,3));
 		
 		TableColumn column = new TableColumn(table, SWT.NONE);
 	    column.setText("IP Address");
@@ -238,7 +248,7 @@ public class MyServer extends CommonServer implements Runnable{
 	    
 	    statusText = new Label(shell,SWT.NONE);
 	    statusText.setText("Server is UP");
-	    statusText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false,2,1));
+	    statusText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false,3,1));
 	    
 	    getIps();
 	    table.clearAll();
@@ -344,7 +354,9 @@ public class MyServer extends CommonServer implements Runnable{
 		display.dispose();
 		
 	}
-
+	/**
+	 * update the table that contains the ip addresses
+	 */
 	private void updateTable(){
 		table.clearAll();				
 	    for(int i = 0; i < ips.size();i++){

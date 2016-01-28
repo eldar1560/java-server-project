@@ -17,7 +17,7 @@ public interface Server {
 	 */
 	void close();
 	/**
-	 * set the controller to work with him
+	 * set the controller
 	 * @param controller - the controller
 	 */
 	void setController(Controller controller);

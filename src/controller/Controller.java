@@ -6,6 +6,11 @@ import algorithms.search.Solution;
 import model.Model;
 import server.Server;
 
+/**
+ * Interface Controller - manage between the model and the server view
+ * @author Eldar,Ofek
+ *
+ */
 public interface Controller {
 	/**
 	 * get the model that the controller work with him

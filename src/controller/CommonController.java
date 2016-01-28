@@ -6,6 +6,11 @@ import algorithms.search.Solution;
 import model.Model;
 import server.Server;
 
+/**
+ * Class CommonController - abstract
+ * @author Eldar,Ofek
+ *
+ */
 public abstract class CommonController implements Controller{
 	
 	Model model;

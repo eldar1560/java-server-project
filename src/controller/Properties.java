@@ -1,6 +1,13 @@
 package controller;
 
-public class Properties {
+import java.io.Serializable;
+
+/**
+ * Class Properties contains the user information
+ * @author Eldar,Ofek
+ *
+ */
+public class Properties implements Serializable{
 	private static final long serialVersionUID = 42L;
 	int port;
 	int numberOfThreads;

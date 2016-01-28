@@ -6,6 +6,11 @@ import algorithms.search.Solution;
 import model.Model;
 import server.Server;
 
+/**
+ * Class MyController extends CommonController
+ * @author Eldar,Ofek
+ *
+ */
 public class MyController extends CommonController{
 	/**
 	 * MyController constructor - get Model and View

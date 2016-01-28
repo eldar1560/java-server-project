@@ -32,6 +32,11 @@ import algorithms.search.State;
 import controller.Controller;
 import controller.Properties;
 
+/**
+ * Class MyModel that implements the functions in Model 
+ * @author Eldar ,Ofek
+ *
+ */
 public class MyModel extends CommonModel{
 	Controller controller;
 	ExecutorService threadpool;
@@ -41,7 +46,8 @@ public class MyModel extends CommonModel{
 	Properties properties;
 	
 	/**
-	 * Default Constructor of MyModel
+	 * <p><strong>Default Constructor of MyModel</strong>
+	 * @param properties that contains the information from the user</p>
 	 */
 	public MyModel(Properties properties) {
 		super();

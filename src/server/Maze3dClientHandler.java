@@ -12,6 +12,11 @@ import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 import controller.Controller;
 
+/**
+ * Class Maze3dClientHandler that manage the connection with the client that play maze3d game
+ * @author Eldar ,Ofek
+ *
+ */
 public class Maze3dClientHandler implements ClientHandler{
 
 	Controller controller;
