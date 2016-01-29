@@ -346,7 +346,7 @@ public class MyServer extends CommonServer implements Runnable{
 			{
 				b=System.currentTimeMillis();
 				b+=c;
-				if(b-a>=1500)
+				if(b-a>=500)
 					 updateTable();
 			}
 		}
